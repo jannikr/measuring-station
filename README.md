@@ -1,5 +1,8 @@
 # MeasuringStation
 
+![MIT](https://img.shields.io/badge/license-MIT-blue.svg)
+[![Lint, Test & Build](https://github.com/jannikr/measuring-station/actions/workflows/node.js.yml/badge.svg)](https://github.com/jannikr/measuring-station/actions/workflows/node.js.yml)
+
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 13.0.2.
 
 ## Development server
