@@ -1,15 +1,12 @@
-import { Component, OnInit } from '@angular/core';
+import { Component } from '@angular/core';
 
 @Component({
   selector: 'app-records',
   templateUrl: './records.component.html',
   styleUrls: ['./records.component.scss']
 })
-export class RecordsComponent implements OnInit {
+export class RecordsComponent {
 
   constructor() { }
-
-  ngOnInit(): void {
-  }
 
 }
