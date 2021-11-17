@@ -1,30 +1,12 @@
-# MeasuringStation
+# Measuring Station
 
 ![MIT](https://img.shields.io/badge/license-MIT-blue.svg)
 [![Lint, Test & Build](https://github.com/jannikr/measuring-station/actions/workflows/node.js.yml/badge.svg)](https://github.com/jannikr/measuring-station/actions/workflows/node.js.yml)
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 13.0.2.
+There is a government program that monitors the amount of ice cream particles in the atmosphere. If the concentration is too low, it indicates that the population is not eating enough ice cream - which poses a serious threat to the economy and public order.
 
-## Development server
+To monitor the health of ice cream, the government has set up monitoring stations in every state. At random, a new station can be added automatically. Using complex atmospheric models, the agency sets a target for each monitoring station. At regular intervals, staff go to different stations and note the actual concentration of particulate matter in the ice cream.
 
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The app will automatically reload if you change any of the source files.
+- This project is based on Martin Fowler's GUI Architectures article
 
-## Code scaffolding
 
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
-
-## Build
-
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory.
-
-## Running unit tests
-
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
-
-## Running end-to-end tests
-
-Run `ng e2e` to execute the end-to-end tests via a platform of your choice. To use this command, you need to first add a package that implements end-to-end testing capabilities.
-
-## Further help
-
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI Overview and Command Reference](https://angular.io/cli) page.
