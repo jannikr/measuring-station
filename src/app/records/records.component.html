@@ -1,3 +1,4 @@
+<!--suppress TypeScriptUnresolvedFunction -->
 <section class="heading-section">
   <h1 class="title is-1 has-text-centered">List of Records</h1>
 </section>
@@ -6,32 +7,22 @@
   <div class="container">
 
     <div class="records-list">
-      <div class="record-item">
+
+      <div class="record-item" *ngFor="let record of records">
         <div class="record-text">
-          MK76Y
-          <span class="tag is-light is-medium">Date 5/26/2006</span>
-          <span class="tag is-light is-medium">Target 42</span>
-          <span class="tag is-light is-medium">Actual 33</span>
-          <span class="tag is-danger is-light is-medium">Variance -9</span>
+          {{record.id}}
+          <span class="tag is-light is-medium">{{ record.date | date }}</span>
+          <span class="tag is-light is-medium">{{ record.target}}</span>
+          <span class="tag is-light is-medium">{{ record.actual }}</span>
+          <span class="tag is-light is-medium" [class.is-danger]="record.variance > 5 || record.variance < -5"
+                [class.is-primary]="record.variance >= 5 || record.variance >= -5">{{ record.variance }}</span>
         </div>
         <div class="edit-box">
           <i class="material-icons">edit</i>
         </div>
-
       </div>
-      <div class="record-item">
-        <div class="record-text">
-          NV140
-          <span class="tag is-light is-medium">Date 5/28/2006</span>
-          <span class="tag is-light is-medium">Target 42</span>
-          <span class="tag is-light is-medium">Actual 33</span>
-          <span class="tag is-danger is-light is-medium">Variance -9</span>
-        </div>
-        <div class="edit-box">
-          <i class="material-icons">edit</i>
-        </div>
 
-      </div>
     </div>
+
   </div>
 </section>
