@@ -1,0 +1,21 @@
+.heading-section {
+  padding-top: 50px;
+}
+
+.container {
+  max-width: 800px;
+  padding: 25px;
+  border-radius: 4px;
+  box-shadow: 0 4px 12px rgba(black, 0.2)
+}
+
+.record-item {
+  padding: 20px;
+  display: flex;
+  justify-content: space-between;
+  font-size: 18px;
+  border-bottom: 1px solid #eee;
+
+  span {
+  margin-left: 10px}
+  }
