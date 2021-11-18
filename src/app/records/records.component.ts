@@ -17,7 +17,6 @@ export class RecordsComponent implements OnInit{
 
   ngOnInit(): void {
     this.records = this.dataService.getAllRecords()
-
   }
 
 }
