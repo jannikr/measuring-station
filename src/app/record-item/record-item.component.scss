@@ -1,0 +1,18 @@
+.record-item {
+  padding: 20px;
+  display: flex;
+  justify-content: space-between;
+  font-size: 18px;
+  border-bottom: 1px solid #eee;
+
+  span {
+    margin-left: 10px}
+
+  .record-label {
+    font-weight: bold;
+  }
+
+  .first-element {
+    margin-left: 20px;
+  }
+}

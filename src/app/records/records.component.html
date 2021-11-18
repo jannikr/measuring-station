@@ -8,19 +8,7 @@
 
     <div class="records-list">
 
-      <div class="record-item" *ngFor="let record of records">
-        <div class="record-text">
-          {{record.id}}
-          <span class="tag is-light is-medium">{{ record.date | date }}</span>
-          <span class="tag is-light is-medium">{{ record.target}}</span>
-          <span class="tag is-light is-medium">{{ record.actual }}</span>
-          <span class="tag is-light is-medium" [class.is-danger]="record.variance > 5 || record.variance < -5"
-                [class.is-primary]="record.variance >= 5 || record.variance >= -5">{{ record.variance }}</span>
-        </div>
-        <div class="edit-box">
-          <i class="material-icons">edit</i>
-        </div>
-      </div>
+      <app-record-item *ngFor="let record of records" [record]="record"></app-record-item>
 
     </div>
 
