@@ -1,25 +1,17 @@
-import { ComponentFixture, TestBed } from '@angular/core/testing';
+import { TestBed } from '@angular/core/testing';
 
 import { RecordsComponent } from './records.component';
+import {HttpClientTestingModule} from "@angular/common/http/testing";
 
 describe('RecordsComponent', () => {
-  let component: RecordsComponent;
-  let fixture: ComponentFixture<RecordsComponent>;
 
-  beforeEach(async () => {
-    await TestBed.configureTestingModule({
-      declarations: [ RecordsComponent ]
-    })
-    .compileComponents();
-  });
+  beforeEach(() => TestBed.configureTestingModule({
+    imports: [HttpClientTestingModule],
+    providers: [RecordsComponent]
+  }));
 
-  beforeEach(() => {
-    fixture = TestBed.createComponent(RecordsComponent);
-    component = fixture.componentInstance;
-    fixture.detectChanges();
-  });
-
-  it('should create', () => {
-    expect(component).toBeTruthy();
+  it('should be created', () => {
+    const service: RecordsComponent = TestBed.get(RecordsComponent);
+    expect(service).toBeTruthy();
   });
 });
