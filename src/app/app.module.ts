@@ -5,11 +5,13 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { RecordsComponent } from './records/records.component';
+import { RecordItemComponent } from './record-item/record-item.component';
 
 @NgModule({
   declarations: [
     AppComponent,
-    RecordsComponent
+    RecordsComponent,
+    RecordItemComponent
   ],
   imports: [
     BrowserModule,
