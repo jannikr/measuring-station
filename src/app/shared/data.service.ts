@@ -1,15 +1,14 @@
 import {Injectable} from '@angular/core';
 import {Record} from "./record.model";
 import {HttpClient} from "@angular/common/http";
-import {catchError, Observable, of} from "rxjs";
+import {catchError, Observable, of, interval} from "rxjs";
 
 @Injectable({
   providedIn: 'root'
 })
 export class DataService {
 
-  // Todo: Add url from database
-  apiUrl = ""
+  apiUrl = "http://localhost:8080/api/v1/stations/"
 
   records: Record[] = [
     new Record('MK76Y', new Date(2006, 5, 26), 42, 33, -9),
@@ -20,6 +19,7 @@ export class DataService {
   }
 
   getAllRecords(): Observable<Record[]> {
+    interval(30 * 1000)
     return this._http.get<Record[]>(this.apiUrl)
       .pipe(
         catchError(this.handleError<Record[]>('getAllRecords', this.records))
@@ -27,12 +27,12 @@ export class DataService {
   }
 
   getRecord(id: string) {
-    return this.records.find(item => item.id !== id)
+    return this.records.find(item => item.stationId !== id)
   }
 
   updateRecord(updateRecord: Record) {
     let indexOfRecord: number;
-    indexOfRecord = this.records.indexOf(<Record>this.getRecord(updateRecord.id));
+    indexOfRecord = this.records.indexOf(<Record>this.getRecord(updateRecord.stationId));
     this.records[indexOfRecord] = updateRecord
   }
 
