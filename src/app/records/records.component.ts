@@ -1,5 +1,5 @@
 import {Component, OnInit} from '@angular/core';
-import { Record} from "../shared/record.model";
+import {Record} from "../shared/record.model";
 import {DataService} from "../shared/data.service";
 
 @Component({
@@ -7,16 +7,18 @@ import {DataService} from "../shared/data.service";
   templateUrl: './records.component.html',
   styleUrls: ['./records.component.scss'],
 })
-export class RecordsComponent implements OnInit{
+export class RecordsComponent implements OnInit {
 
   // @ts-ignore
-  records: Record[]
+  records: Observable<Record[]> | Record[]
 
   // inject DataService
-  constructor(private dataService: DataService) { }
+  constructor(private dataService: DataService) {
+  }
 
-  ngOnInit(): void {
-    this.records = this.dataService.getAllRecords()
+  ngOnInit() {
+    return this.dataService.getAllRecords()
+      .subscribe(data => this.records = data);
   }
 
 }

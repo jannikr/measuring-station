@@ -6,6 +6,8 @@ import { AppComponent } from './app.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { RecordsComponent } from './records/records.component';
 import { RecordItemComponent } from './record-item/record-item.component';
+import {HttpClientModule} from "@angular/common/http";
+import {DataService} from "./shared/data.service";
 
 @NgModule({
   declarations: [
@@ -16,9 +18,10 @@ import { RecordItemComponent } from './record-item/record-item.component';
   imports: [
     BrowserModule,
     AppRoutingModule,
-    BrowserAnimationsModule
+    BrowserAnimationsModule,
+    HttpClientModule
   ],
-  providers: [],
+  providers: [DataService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
