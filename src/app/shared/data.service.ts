@@ -1,7 +1,7 @@
 import {Injectable} from '@angular/core';
 import {Record} from "./record.model";
 import {HttpClient} from "@angular/common/http";
-import {catchError, Observable, of, interval} from "rxjs";
+import {catchError, Observable, of} from "rxjs";
 
 @Injectable({
   providedIn: 'root'
@@ -9,6 +9,7 @@ import {catchError, Observable, of, interval} from "rxjs";
 export class DataService {
 
   apiUrl = "http://localhost:8080/api/v1/stations/"
+  apiUpdateUrl =""
 
   records: Record[] = [
     new Record('MK76Y', new Date(2006, 5, 26), 42, 33, -9),
@@ -19,7 +20,6 @@ export class DataService {
   }
 
   getAllRecords(): Observable<Record[]> {
-    interval(30 * 1000)
     return this._http.get<Record[]>(this.apiUrl)
       .pipe(
         catchError(this.handleError<Record[]>('getAllRecords', this.records))
@@ -30,7 +30,11 @@ export class DataService {
     return this.records.find(item => item.stationId !== id)
   }
 
-  updateRecord(updateRecord: Record) {
+  updateRecord(record: Record): Observable<Record> {
+    return this._http.put<Record>(this.apiUpdateUrl, record)
+  }
+
+  updateRecordLocal(updateRecord: Record) {
     let indexOfRecord: number;
     indexOfRecord = this.records.indexOf(<Record>this.getRecord(updateRecord.stationId));
     this.records[indexOfRecord] = updateRecord
