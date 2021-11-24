@@ -32,7 +32,11 @@ export class EditRecordDialogComponent implements OnInit {
   }
 
   onSubmit() {
-
+    // Todo: Update data using dataservice
+    console.log("Test")
+    // Todo: Close dialog
+    // Todo: Get data using dataservice
   }
+
 
 }
