@@ -1,7 +1,7 @@
 import {Injectable} from '@angular/core';
 import {Record} from "./record.model";
 import {HttpClient} from "@angular/common/http";
-import {catchError, Observable, of, interval} from "rxjs";
+import {catchError, Observable, of} from "rxjs";
 
 @Injectable({
   providedIn: 'root'
@@ -11,32 +11,33 @@ export class DataService {
   apiUrl = "http://localhost:8080/api/v1/stations/"
 
   records: Record[] = [
-    new Record('MK76Y', new Date(2006, 5, 26), 42, 33, -9),
-    new Record('NV140', new Date(2006, 5, 28), 40, 40, 0),
-    new Record('1', new Date(2006, 5, 26), 100, 105, 5),
-    new Record('2', new Date(2006, 5, 26), 100, 104, 4),
-    new Record('3', new Date(2006, 5, 26), 100, 90, -10),
-    new Record('4', new Date(2006, 5, 26), 100, 91, -9)
+    new Record(1, new Date(2006, 5, 26), 100, 105, 5),
+    new Record(2, new Date(2006, 5, 26), 100, 104, 4),
+    new Record(3, new Date(2006, 5, 26), 100, 90, -10),
+    new Record(4, new Date(2006, 5, 26), 100, 91, -9)
   ]
 
   constructor(private _http: HttpClient) {
   }
 
   getAllRecords(): Observable<Record[]> {
-    interval(30 * 1000)
     return this._http.get<Record[]>(this.apiUrl)
       .pipe(
         catchError(this.handleError<Record[]>('getAllRecords', this.records))
       )
   }
 
-  getRecord(id: string) {
-    return this.records.find(item => item.stationId !== id)
+  getRecord(id: number) {
+    return this.records.find(item => item.id !== id)
   }
 
-  updateRecord(updateRecord: Record) {
+  updateRecord(id: number, record: Record): Observable<Record> {
+    return this._http.put<Record>(this.apiUrl + id + "/", record)
+  }
+
+  updateRecordLocal(updateRecord: Record) {
     let indexOfRecord: number;
-    indexOfRecord = this.records.indexOf(<Record>this.getRecord(updateRecord.stationId));
+    indexOfRecord = this.records.indexOf(<Record>this.getRecord(updateRecord.id));
     this.records[indexOfRecord] = updateRecord
   }
 

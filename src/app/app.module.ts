@@ -8,18 +8,32 @@ import { RecordsComponent } from './records/records.component';
 import { RecordItemComponent } from './record-item/record-item.component';
 import {HttpClientModule} from "@angular/common/http";
 import {DataService} from "./shared/data.service";
+import {MatDialogModule} from "@angular/material/dialog";
+import { MatButtonModule } from "@angular/material/button";
+import { MatIconModule} from "@angular/material/icon";
+import { EditRecordDialogComponent } from './dialog/edit-record-dialog/edit-record-dialog.component';
+import {MatCardModule} from "@angular/material/card";
+import { FormsModule, ReactiveFormsModule} from "@angular/forms";
+
 
 @NgModule({
   declarations: [
     AppComponent,
     RecordsComponent,
-    RecordItemComponent
+    RecordItemComponent,
+    EditRecordDialogComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     BrowserAnimationsModule,
-    HttpClientModule
+    HttpClientModule,
+    MatDialogModule,
+    MatButtonModule,
+    MatIconModule,
+    MatCardModule,
+    FormsModule,
+    ReactiveFormsModule
   ],
   providers: [DataService],
   bootstrap: [AppComponent]

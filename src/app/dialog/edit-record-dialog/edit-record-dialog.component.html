@@ -1,0 +1,63 @@
+<div mat-dialog-content>
+
+  <h1 class="title is-2">Edit Record</h1>
+
+  <form [formGroup]="recordForm" (submit)="onSubmit()">
+  <fieldset disabled>
+    <div class="field">
+      <label class="label">Station Id</label>
+      <div class="control">
+        <input class="form-control input" [formControlName]="'id'" type="text" placeholder="">
+      </div>
+    </div>
+
+  </fieldset>
+
+    <div class="field">
+      <label class="label">Date</label>
+      <div class="control">
+        <input class="input" [formControlName]="'date'" type="text" placeholder="">
+      </div>
+    </div>
+
+    <fieldset disabled>
+
+    <div class="field">
+      <label class="label">Target</label>
+      <div class="control">
+        <input class="input" [formControlName]="'target'" type="number" placeholder="">
+      </div>
+    </div>
+
+  </fieldset>
+
+    <div class="field">
+      <label class="label">Actual</label>
+      <div class="control">
+        <input class="input" [formControlName]="'actual'" type="number" placeholder="">
+      </div>
+    </div>
+
+    <fieldset disabled>
+
+        <div class="field">
+          <label class="label">Variance</label>
+          <div class="control">
+            <input class="input" [formControlName]="'variance'" type="number" placeholder="">
+          </div>
+        </div>
+
+    </fieldset>
+
+    <br>
+
+    <div class="field is-grouped">
+      <div class="control">
+        <button class="button is-link">Submit</button>
+      </div>
+      <div class="control">
+        <button class="button is-link is-light" (click)="onCancelClick()">Cancel</button>
+      </div>
+    </div>
+  </form>
+</div>
