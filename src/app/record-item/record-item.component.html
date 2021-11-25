@@ -6,8 +6,8 @@
     <span class="tag is-light is-medium">Target: {{ record.target}}</span>
     <span class="tag is-light is-medium">Actual: {{ record.actual }}</span>
     <span class="tag is-light is-medium" [class.is-danger]="record.actual <= 0.9 * record.target"
-          [class.is-success]="record.actual >= 0.05 * record.target + record.target"
-          [class.is-light]="record.actual < 0.05 * record.target + record.target && record.actual > 0.9 * record.target">Variance: {{ record.variance }}</span>
+          [class.is-success]="record.actual >= 1.05 * record.target"
+          [class.is-light]="record.actual < 1.05 * record.target && record.actual > 0.9 * record.target">Variance: {{ record.variance }}</span>
   </div>
   <div class="edit-box">
     <i class="material-icons">edit</i>
