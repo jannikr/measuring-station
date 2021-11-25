@@ -23,7 +23,7 @@ export class EditRecordDialogComponent implements OnInit {
   ngOnInit(): void {
     this.recordForm = this.formBuilder.group({
       id: [this.data.id],
-      date: [formatDate(this.data.date, 'dd/MM/yyyy', 'en-US')],
+      date: [formatDate(this.data.date, 'yyyy-MM-dd', 'en-US')],
       target: [this.data.target],
       actual: [this.data.actual],
       variance: [this.data.variance],
