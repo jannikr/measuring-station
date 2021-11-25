@@ -9,7 +9,6 @@ import {catchError, Observable, of} from "rxjs";
 export class DataService {
 
   apiUrl = "http://localhost:8080/api/v1/stations/"
-  apiUpdateUrl =""
 
   records: Record[] = [
     new Record(1, new Date(2006, 5, 26), 42, 33, -9),
@@ -30,8 +29,8 @@ export class DataService {
     return this.records.find(item => item.stationId !== id)
   }
 
-  updateRecord(record: Record): Observable<Record> {
-    return this._http.put<Record>(this.apiUpdateUrl, record)
+  updateRecord(stationId: number, record: Record): Observable<Record> {
+    return this._http.put<Record>(this.apiUrl + stationId, record)
   }
 
   updateRecordLocal(updateRecord: Record) {

@@ -17,13 +17,6 @@ export class RecordItemComponent{
   constructor(private dataService: DataService,
               private dialog: MatDialog) { }
 
-  onRecordUpdate(recordItem: Record) {
-    this.dataService.updateRecord(recordItem)
-      .subscribe(() => {
-        this.dataService.getAllRecords()
-      })
-  }
-
   onEdit(record: Record) {
     const dialogConfig = new MatDialogConfig()
 

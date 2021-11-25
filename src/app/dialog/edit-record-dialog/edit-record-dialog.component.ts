@@ -2,6 +2,7 @@ import {Component, Inject, OnInit} from '@angular/core';
 import {FormBuilder, FormGroup} from "@angular/forms";
 import {MAT_DIALOG_DATA, MatDialogRef} from "@angular/material/dialog";
 import {formatDate} from "@angular/common";
+import {DataService} from "../../shared/data.service";
 
 @Component({
   selector: 'app-edit-record-dialog',
@@ -14,8 +15,10 @@ export class EditRecordDialogComponent implements OnInit {
   public recordForm: FormGroup
 
   constructor(private formBuilder: FormBuilder,
-  private dialogRef: MatDialogRef<EditRecordDialogComponent>,
-  @Inject(MAT_DIALOG_DATA) public data: any) { }
+              private dataService: DataService,
+              private dialogRef: MatDialogRef<EditRecordDialogComponent>,
+              @Inject(MAT_DIALOG_DATA) public data: any) {
+  }
 
   ngOnInit(): void {
     this.recordForm = this.formBuilder.group({
@@ -32,10 +35,13 @@ export class EditRecordDialogComponent implements OnInit {
   }
 
   onSubmit() {
-    // Todo: Update data using dataservice
-    // Todo: Close dialog
-    // Todo: Get data using dataservice
+    console.log(this.recordForm.value)
+    let stationID = this.recordForm.value.stationId
+    this.dataService.updateRecord(stationID, this.recordForm.value)
+      .subscribe(() => {
+        this.dialogRef.close()
+        this.dataService.getAllRecords()
+      })
   }
-
 
 }
