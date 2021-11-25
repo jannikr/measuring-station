@@ -40,6 +40,9 @@ export class EditRecordDialogComponent implements OnInit {
     this.dataService.updateRecord(id, this.recordForm.value)
       .subscribe(() => {
         this.dialogRef.close()
+      },error => {
+        console.log("Record update is not available for local data")
+        console.log(error)
       })
   }
 
