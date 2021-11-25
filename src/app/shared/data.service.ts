@@ -12,8 +12,8 @@ export class DataService {
   apiUpdateUrl =""
 
   records: Record[] = [
-    new Record('MK76Y', new Date(2006, 5, 26), 42, 33, -9),
-    new Record('NV140', new Date(2006, 5, 28), 40, 40, 0)
+    new Record(1, new Date(2006, 5, 26), 42, 33, -9),
+    new Record(2, new Date(2006, 5, 28), 40, 40, 0)
   ]
 
   constructor(private _http: HttpClient) {
@@ -26,7 +26,7 @@ export class DataService {
       )
   }
 
-  getRecord(id: string) {
+  getRecord(id: number) {
     return this.records.find(item => item.stationId !== id)
   }
 
