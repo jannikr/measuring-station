@@ -26,16 +26,16 @@ export class DataService {
   }
 
   getRecord(id: number) {
-    return this.records.find(item => item.stationId !== id)
+    return this.records.find(item => item.id !== id)
   }
 
-  updateRecord(stationId: number, record: Record): Observable<Record> {
-    return this._http.put<Record>(this.apiUrl + stationId, record)
+  updateRecord(id: number, record: Record): Observable<Record> {
+    return this._http.put<Record>(this.apiUrl + id + "/", record)
   }
 
   updateRecordLocal(updateRecord: Record) {
     let indexOfRecord: number;
-    indexOfRecord = this.records.indexOf(<Record>this.getRecord(updateRecord.stationId));
+    indexOfRecord = this.records.indexOf(<Record>this.getRecord(updateRecord.id));
     this.records[indexOfRecord] = updateRecord
   }
 

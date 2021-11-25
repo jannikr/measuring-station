@@ -22,7 +22,7 @@ export class EditRecordDialogComponent implements OnInit {
 
   ngOnInit(): void {
     this.recordForm = this.formBuilder.group({
-      stationId: [this.data.stationId],
+      id: [this.data.id],
       date: [formatDate(this.data.date, 'dd/MM/yyyy', 'en-US')],
       target: [this.data.target],
       actual: [this.data.actual],
@@ -36,8 +36,8 @@ export class EditRecordDialogComponent implements OnInit {
 
   onSubmit() {
     console.log(this.recordForm.value)
-    let stationID = this.recordForm.value.stationId
-    this.dataService.updateRecord(stationID, this.recordForm.value)
+    let id = this.recordForm.value.id
+    this.dataService.updateRecord(id, this.recordForm.value)
       .subscribe(() => {
         this.dialogRef.close()
         this.dataService.getAllRecords()
