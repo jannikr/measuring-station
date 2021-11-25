@@ -12,7 +12,11 @@ export class DataService {
 
   records: Record[] = [
     new Record('MK76Y', new Date(2006, 5, 26), 42, 33, -9),
-    new Record('NV140', new Date(2006, 5, 28), 40, 40, 0)
+    new Record('NV140', new Date(2006, 5, 28), 40, 40, 0),
+    new Record('1', new Date(2006, 5, 26), 100, 105, 5),
+    new Record('2', new Date(2006, 5, 26), 100, 104, 4),
+    new Record('3', new Date(2006, 5, 26), 100, 90, -10),
+    new Record('4', new Date(2006, 5, 26), 100, 91, -9)
   ]
 
   constructor(private _http: HttpClient) {

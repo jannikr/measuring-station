@@ -5,8 +5,9 @@
     <span class="tag is-light is-medium first-element">Date: {{ record.date | date }}</span>
     <span class="tag is-light is-medium">Target: {{ record.target}}</span>
     <span class="tag is-light is-medium">Actual: {{ record.actual }}</span>
-    <span class="tag is-light is-medium" [class.is-danger]="record.variance > 5 || record.variance < -5"
-          [class.is-primary]="record.variance >= 5 || record.variance >= -5">Variance: {{ record.variance }}</span>
+    <span class="tag is-light is-medium" [class.is-danger]="record.actual <= 0.9 * record.target"
+          [class.is-success]="record.actual >= 0.05 * record.target + record.target"
+          [class.is-light]="record.actual < 0.05 * record.target + record.target && record.actual > 0.9 * record.target">Variance: {{ record.variance }}</span>
   </div>
   <div class="edit-box">
     <i class="material-icons">edit</i>
