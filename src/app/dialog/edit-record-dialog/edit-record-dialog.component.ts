@@ -40,7 +40,6 @@ export class EditRecordDialogComponent implements OnInit {
     this.dataService.updateRecord(id, this.recordForm.value)
       .subscribe(() => {
         this.dialogRef.close()
-        this.dataService.getAllRecords()
       })
   }
 
