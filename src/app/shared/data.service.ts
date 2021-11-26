@@ -1,7 +1,8 @@
 import {Injectable} from '@angular/core';
 import {Record} from "./record.model";
 import {HttpClient} from "@angular/common/http";
-import {catchError, Observable, of} from "rxjs";
+import {catchError, Observable, of, Subject} from "rxjs";
+
 
 @Injectable({
   providedIn: 'root'
@@ -9,6 +10,8 @@ import {catchError, Observable, of} from "rxjs";
 export class DataService {
 
   apiUrl = "http://localhost:8080/api/v1/stations/"
+
+  public updateNotificationSubject = new Subject()
 
   records: Record[] = [
     new Record(1, new Date(2006, 5, 26), 100, 105, 5),
@@ -33,6 +36,10 @@ export class DataService {
 
   updateRecord(id: number, record: Record): Observable<Record> {
     return this._http.put<Record>(this.apiUrl + id + "/", record)
+  }
+
+  sendNotification(record: Record){
+    this.updateNotificationSubject.next(record)
   }
 
   updateRecordLocal(updateRecord: Record) {
