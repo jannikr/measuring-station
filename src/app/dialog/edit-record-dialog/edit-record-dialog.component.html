@@ -1,4 +1,4 @@
-<div mat-dialog-content>
+<div class="form" mat-dialog-content>
 
   <h1 class="title is-2">Edit Record</h1>
 
@@ -44,6 +44,8 @@
           <label class="label">Variance</label>
           <div class="control">
             <input class="input" [formControlName]="'variance'" type="number" placeholder="">
+            <p *ngIf="variance === 'critical'" class="is-size-6 has-text-danger info-box">Negative deviation!</p>
+            <p *ngIf="variance === 'positive'" class="is-size-6 has-text-success info-box">Positive deviation!</p>
           </div>
         </div>
 

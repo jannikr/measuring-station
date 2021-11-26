@@ -14,6 +14,8 @@ export class EditRecordDialogComponent implements OnInit {
 
   // @ts-ignore
   public recordForm: FormGroup
+  public variance: String = "not critical"
+
 
   constructor(private formBuilder: FormBuilder,
               private dataService: DataService,
@@ -39,7 +41,7 @@ export class EditRecordDialogComponent implements OnInit {
       .subscribe(() => {
         this.dialogRef.close()
         this.dataService.sendNotification(this.recordForm.value);
-      },error => {
+      }, error => {
         console.log("Record update is not available for local data")
         console.log(error)
       })
@@ -48,7 +50,20 @@ export class EditRecordDialogComponent implements OnInit {
   detectVarianceChanges() {
     this.recordForm.valueChanges.subscribe(() => {
       this.recordForm.get("variance")?.setValue(this.recordForm.value.target - this.recordForm.value.actual, {emitEvent: false});
+      this.showDeviation()
     })
+  }
+
+  showDeviation() {
+    if (this.recordForm.value.actual <= 0.9 * this.recordForm.value.target) {
+      console.log("Now critical!")
+      this.variance = "critical"
+    } else if (this.recordForm.value.actual >= 0.05 * this.recordForm.value.target + this.recordForm.value.target) {
+      console.log("Now positive!")
+      this.variance = "positive"
+    } else {
+      this.variance = "not critical"
+    }
   }
 
 }
