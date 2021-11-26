@@ -26,7 +26,8 @@ export class RecordsComponent implements OnInit {
     }, 5000);
     // Subject that gets notified if record is updated
     this.dataService.updateNotificationSubject.subscribe(d => {
-      this.records = this.dataService.getAllRecords().subscribe(data => {
+      this.dataService.getAllRecords().subscribe(data => {
+        console.log("Update data in record component: " + d)
         this.records = data;
       })
     })
