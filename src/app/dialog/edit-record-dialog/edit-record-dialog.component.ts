@@ -30,10 +30,7 @@ export class EditRecordDialogComponent implements OnInit {
       actual: [this.data.actual],
       variance: [this.data.variance],
     })
-  }
-
-  onCancelClick(): void {
-    this.dialogRef.close()
+    this.detectVarianceChanges()
   }
 
   onSubmit() {
@@ -46,6 +43,12 @@ export class EditRecordDialogComponent implements OnInit {
         console.log("Record update is not available for local data")
         console.log(error)
       })
+  }
+
+  detectVarianceChanges() {
+    this.recordForm.valueChanges.subscribe(() => {
+      this.recordForm.get("variance")?.setValue(this.recordForm.value.target - this.recordForm.value.actual, {emitEvent: false});
+    })
   }
 
 }
