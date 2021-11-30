@@ -1,5 +1,5 @@
 import {Component, Inject, OnInit} from '@angular/core';
-import {FormBuilder, FormGroup} from "@angular/forms";
+import {FormBuilder, FormGroup, Validators} from "@angular/forms";
 import {MAT_DIALOG_DATA, MatDialogRef} from "@angular/material/dialog";
 import {formatDate} from "@angular/common";
 import {DataService} from "../../shared/data.service";
@@ -27,9 +27,9 @@ export class EditRecordDialogComponent implements OnInit {
   ngOnInit(): void {
     this.recordForm = this.formBuilder.group({
       id: [this.data.id],
-      date: [formatDate(this.data.date, 'yyyy-MM-dd', 'en-US')],
+      date: [formatDate(this.data.date, 'yyyy-MM-dd', 'en-US'), Validators.required],
       target: [this.data.target],
-      actual: [this.data.actual],
+      actual: [this.data.actual, Validators.required],
       variance: [this.data.variance],
     })
     this.detectVarianceChanges()
@@ -65,5 +65,4 @@ export class EditRecordDialogComponent implements OnInit {
       this.variance = "not critical"
     }
   }
-
 }
