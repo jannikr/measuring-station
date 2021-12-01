@@ -5,16 +5,15 @@
     <span class="tag is-light is-medium first-element">Date: {{ record.date | date }}</span>
     <span class="tag is-light is-medium">Target: {{ record.target}}</span>
     <span class="tag is-light is-medium">Actual: {{ record.actual }}</span>
-    <span class="tag is-light is-medium" [class.is-danger]="record.actual <= 0.9 * record.target"
-          [class.is-success]="record.actual >= 1.05 * record.target"
-          [class.is-light]="record.actual < 1.05 * record.target && record.actual > 0.9 * record.target">Variance: {{ record.variance }}</span>
+    <span class="tag is-light is-medium" [class.is-danger]="variance === 'critical'"
+          [class.is-success]="variance === 'positive'"
+          [class.is-light]="variance === 'not critical'">Variance: {{ record.variance }}</span>
     <span class="tag is-light is-medium icon-text">
-        <i *ngIf="record.actual <= 0.9 * record.target" [ngStyle]="{'color': 'hsl(348, 100%, 61%)'}" class="arrowdown material-icons">arrow_downward</i>
-        <i *ngIf="record.actual >= 1.05 * record.target" [ngStyle]="{'color': 'hsl(141, 53%, 53%)', 'transform': 'rotate(180deg)'}" class="arrowup material-icons">arrow_downward</i>
-        <i *ngIf="record.actual < 1.05 * record.target && record.actual > 0.9 * record.target" [ngStyle]="{'transform': 'rotate(-90deg)'}" class="arrowup material-icons">arrow_downward</i>
+        <i *ngIf="variance === 'critical'" [ngStyle]="{'color': 'hsl(348, 100%, 61%)'}" class="arrowdown material-icons">arrow_downward</i>
+        <i *ngIf="variance === 'positive'" [ngStyle]="{'color': 'hsl(141, 53%, 53%)', 'transform': 'rotate(180deg)'}" class="arrowup material-icons">arrow_downward</i>
+        <i *ngIf="variance === 'not critical'" [ngStyle]="{'transform': 'rotate(-90deg)'}" class="arrowup material-icons">arrow_downward</i>
         {{record.variance}}
     </span>
-    <span class="material-icons blue-color"> edit</span>
   </div>
 
   <div class="edit-box">
