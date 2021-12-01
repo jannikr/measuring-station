@@ -1,0 +1,63 @@
+<div class="form" mat-dialog-content>
+
+  <h1 class="title is-2">Edit Record</h1>
+
+  <form [formGroup]="recordForm" (submit)="onSubmit()">
+  <fieldset disabled>
+    <div class="field">
+      <label class="label">Station Id</label>
+      <div class="control">
+        <input class="form-control input" [formControlName]="'id'" type="text" placeholder="">
+      </div>
+    </div>
+
+  </fieldset>
+
+    <div class="field">
+      <label class="label">Date</label>
+      <div class="control">
+        <input class="input" [formControlName]="'date'" type="text" placeholder="">
+      </div>
+    </div>
+
+    <fieldset disabled>
+
+    <div class="field">
+      <label class="label">Target</label>
+      <div class="control">
+        <input class="input" [formControlName]="'target'" type="number" placeholder="">
+      </div>
+    </div>
+
+  </fieldset>
+
+    <div class="field">
+      <label class="label">Actual</label>
+      <div class="control">
+        <input class="input" [formControlName]="'actual'" type="number" placeholder="">
+      </div>
+    </div>
+
+    <fieldset disabled>
+
+        <div class="field">
+          <label class="label">Variance</label>
+          <div class="control">
+            <input class="input" [formControlName]="'variance'" type="number" placeholder="">
+            <p *ngIf="variance === 'critical'" class="is-size-6 has-text-danger info-box">Negative deviation!</p>
+            <p *ngIf="variance === 'positive'" class="is-size-6 has-text-success info-box">Positive deviation!</p>
+          </div>
+        </div>
+
+    </fieldset>
+
+    <br>
+
+    <div class="field is-grouped">
+      <div class="control">
+        <button *ngIf="recordForm.get('date')!.valid && recordForm.get('actual')!.valid" class="button is-primary">Submit</button>
+        <button *ngIf="recordForm.get('date')!.invalid || recordForm.get('actual')!.invalid" class="button is-static">Submit</button>
+      </div>
+    </div>
+  </form>
+</div>
