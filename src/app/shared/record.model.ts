@@ -1,7 +1,7 @@
 export class Record {
 
   constructor(
-    public stationId: string,
+    public id: number,
     public date: Date,
     public target: number,
     public actual: number,
