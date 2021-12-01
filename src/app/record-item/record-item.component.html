@@ -15,8 +15,8 @@
         {{record.variance}}
     </span>
   </div>
-
   <div class="edit-box">
+    <span *ngIf="isNew" class="tag is-info is-medium">new!</span>
     <button mat-icon-button aria-label="Edit" (click)="onEdit(record)">
       <mat-icon>edit</mat-icon>
     </button>

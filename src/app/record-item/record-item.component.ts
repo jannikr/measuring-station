@@ -3,6 +3,7 @@ import { Record} from "../shared/record.model";
 import {DataService} from "../shared/data.service";
 import { MatDialog, MatDialogConfig } from "@angular/material/dialog";
 import {EditRecordDialogComponent} from "../dialog/edit-record-dialog/edit-record-dialog.component";
+import {formatDate} from "@angular/common";
 
 @Component({
   selector: 'app-record-item',
@@ -14,6 +15,7 @@ export class RecordItemComponent implements OnInit{
   // @ts-ignore
   @Input() record: Record
   public variance: String | undefined
+  public isNew: boolean = false
 
   constructor(private dataService: DataService,
               private dialog: MatDialog) { }
@@ -27,19 +29,22 @@ export class RecordItemComponent implements OnInit{
 
   ngOnInit(): void {
     this.showDeviation()
+    this.isNewCalc()
   }
 
-  // Todo: Check if this is executed when new data appears
   showDeviation() {
     if (this.record.actual <= 0.9 * this.record.target) {
-      console.log("Now critical!")
       this.variance = "critical"
     } else if (this.record.actual >= 0.05 * this.record.target + this.record.target) {
-      console.log("Now positive!")
       this.variance = "positive"
     } else {
       this.variance = "not critical"
     }
+  }
+
+  isNewCalc() {
+    let newDate = formatDate(new Date(), 'yyyy-MM-dd', 'en');
+    this.isNew = newDate == this.record.date.toString();
   }
 
 }
