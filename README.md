@@ -1,3 +1,5 @@
+<img src="https://github.com/jannikr/measuring-station/blob/main/logo.png" alt="Ice Logo" title="Logo" align="right" height="60" />
+
 # Measuring Station
 
 ![MIT](https://img.shields.io/badge/license-MIT-blue.svg)
