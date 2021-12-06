@@ -11,7 +11,7 @@ export class RecordsComponent implements OnInit {
 
   // @ts-ignore
   records: Observable<Record[]>
-  interval = 5
+  interval = 2
 
   // inject DataService
   constructor(private dataService: DataService) {
@@ -23,7 +23,7 @@ export class RecordsComponent implements OnInit {
     this.refreshData();
     this.interval = setInterval(() => {
       this.refreshData();
-    }, 5000);
+    }, 2000);
     // Subject that gets notified if record is updated
     this.dataService.updateNotificationSubject.subscribe(d => {
       this.dataService.getAllRecords().subscribe(data => {

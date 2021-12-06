@@ -42,12 +42,6 @@ export class DataService {
     this.updateNotificationSubject.next(record)
   }
 
-  updateRecordLocal(updateRecord: Record) {
-    let indexOfRecord: number;
-    indexOfRecord = this.records.indexOf(<Record>this.getRecord(updateRecord.id));
-    this.records[indexOfRecord] = updateRecord
-  }
-
   /**
    * Handle Http operation that failed.
    * Let the app continue.
@@ -62,5 +56,22 @@ export class DataService {
       // Let the app keep running by returning an empty result.
       return of(result as T);
     };
+  }
+
+  /**
+   * Calculate kind of deviation for a given station / record
+   * @param actual - measured value for a given station
+   * @param target - target value for a given station
+   */
+  showDeviation(actual: number, target: number): String {
+    let recordDeviationIs: String;
+    if (actual <= 0.9 * target) {
+      recordDeviationIs = "critical"
+    } else if (actual >= 0.05 * target + target) {
+      recordDeviationIs = "positive"
+    } else {
+      recordDeviationIs = "not critical"
+    }
+    return recordDeviationIs
   }
 }
