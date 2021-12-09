@@ -28,21 +28,13 @@ export class RecordItemComponent implements OnInit{
   }
 
   ngOnInit(): void {
-    this.showDeviation()
-    this.isNewCalc()
+    //DRY Pattern
+    this.variance = this.dataService.showDeviation(this.record.actual, this.record.target)
+
+    this.isTheSameDate()
   }
 
-  showDeviation() {
-    if (this.record.actual <= 0.9 * this.record.target) {
-      this.variance = "critical"
-    } else if (this.record.actual >= 0.05 * this.record.target + this.record.target) {
-      this.variance = "positive"
-    } else {
-      this.variance = "not critical"
-    }
-  }
-
-  isNewCalc() {
+  isTheSameDate() {
     let newDate = formatDate(new Date(), 'yyyy-MM-dd', 'en');
     this.isNew = newDate == this.record.date.toString();
   }
