@@ -2,6 +2,7 @@ import {Injectable} from '@angular/core';
 import {Record} from "./record.model";
 import {HttpClient} from "@angular/common/http";
 import {catchError, Observable, of, Subject} from "rxjs";
+import {environment} from "../../environments/environment";
 
 
 @Injectable({
@@ -9,7 +10,7 @@ import {catchError, Observable, of, Subject} from "rxjs";
 })
 export class DataService {
 
-  apiUrl = "http://localhost:8080/api/v1/stations/"
+  apiUrl = `${environment.baseUrl}api/v1/stations/`
 
   public updateNotificationSubject = new Subject()
 
