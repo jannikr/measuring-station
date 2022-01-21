@@ -27,4 +27,6 @@ The frontend is based on an MVC architecture with different components, each of 
 
 Throughout the project we have tried to develop a deployment pipeline that allows a high degree of automation. In this context, we decided to work with OS-level virtualisation. Docker is very popular in this area and offers us the possibility to develop our software system-independently and to scale it differently depending on the load on the servers. As a cloud computing provider, we use aws, the market leader in this field. The Docker containers with the different software components are executed on ec2 instances. To manage the database, we use RDS, a storage solution from aws with Multi-AZ option for high availability.
 
+A detailed description is available [here](SYSTEM-ARCHITECTURE.md).
+
 
