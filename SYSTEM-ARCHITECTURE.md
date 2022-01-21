@@ -21,7 +21,7 @@ Docker offers a lot of flexibility because the Docker Deamon takes care of certa
     environment:
       - SPRING_DATASOURCE_URL=<data_source_url>
       - SPRING_DATASOURCE_USERNAME=<datasource_username>
-      - SPRING_DATASOURCE_PASSWORD=<datasource_password
+      - SPRING_DATASOURCE_PASSWORD=<datasource_password>
       - SCHEDULING=false
 ```
 
