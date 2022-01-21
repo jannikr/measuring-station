@@ -17,13 +17,11 @@ export class RecordsComponent implements OnInit {
   constructor(private dataService: DataService) {
   }
 
-
-
   ngOnInit() {
-    this.refreshData();
-    this.interval = setInterval(() => {
-      this.refreshData();
-    }, 2000);
+    this.dataService.getAllRecords()
+      .subscribe(data => {
+        this.records = data;
+      });
     // Subject that gets notified if record is updated
     this.dataService.updateNotificationSubject.subscribe(d => {
       this.dataService.getAllRecords().subscribe(data => {
@@ -32,13 +30,4 @@ export class RecordsComponent implements OnInit {
       })
     })
   }
-
-
-  refreshData(){
-  this.dataService.getAllRecords()
-    .subscribe(data => {
-      this.records = data;
-    });
-  }
-
 }
