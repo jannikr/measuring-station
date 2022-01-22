@@ -25,6 +25,13 @@ Docker offers a lot of flexibility because the Docker Deamon takes care of certa
       - SCHEDULING=false
 ```
 
+For the Frontend Application we do not use a dockerfile. In this case we have just one command to start the container with port 80:
+
+```
+sudo docker run -d -p 80:80 --name measuring-stations-app jannikolairue/measuring-stations-app:latest
+```
+
+
 ## Architecture
 
 With this project we primarily dealt with the ec2 instances of aws. There are certainly many other ways to implement this project with aws. However, we decided to run the frontend and the backend on two different ec2 instances. Docker is installed on both instances. The backend is connected to the RDS data service of aws and uses MySql to store the data. The two ec2 instances belong to the same VPC in order to protect access from outside, but to keep working with the two instances with authorisation as simple as possible. The frontend protects the Security Group (SG) launch-wizard-2 and the backend protects the SG launch-wizard-1. The SGs are relevant to prevent unauthorised access to the database. Only the frontend has access to the backend and can also change data. SGs have secure ssh access to make adjustments to the ec2.
